@@ -1,0 +1,18 @@
+{
+  "name": "purpleBlog",
+  "version": "0.0.1",
+  "devDependencies": {
+    "gulp": "",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "",
+    "gulp-concat-css": "",
+    "gulp-flatten": "",
+    "gulp-install": "^0.4.0",
+    "gulp-jshint": "",
+    "gulp-minify-css": "",
+    "gulp-notify": "",
+    "gulp-uglify": "",
+    "gulp-uglifycss": "",
+    "run-sequence": "^1.1.0"
+  }
+}
