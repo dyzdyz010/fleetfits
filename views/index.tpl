@@ -17,7 +17,8 @@
 	</header>
 
 	<div class="container">
-		<h3 class="text-center">Imperium Doctrines</h3>
+		<!-- <h3 class="text-center">Imperium Doctrines</h3> -->
+		<legend><h3>Imperium Doctrines</h3></legend>
 		<div class="row">
 			<div class="col-md-6 col-xs-12">
 				<div class="panel-heading">

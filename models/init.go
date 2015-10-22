@@ -2,9 +2,9 @@ package models
 
 import (
 	"encoding/json"
-	"fmt"
+	// "fmt"
 	"gopkg.in/mgo.v2"
-	"strings"
+	// "strings"
 	// "gopkg.in/mgo.v2/bson"
 	"io/ioutil"
 )
@@ -24,39 +24,39 @@ func init() {
 
 	// initTypes()
 
-	fitStr := `[Loki, Loki]
-	Co-Processor II
-	Co-Processor II
-	Co-Processor II
-	Co-Processor II
+	// fitStr := `[Loki, Loki]
+	// Co-Processor II
+	// Co-Processor II
+	// Co-Processor II
+	// Co-Processor II
 
-	Command Processor I
-	Command Processor I
-	Command Processor I
-	Conjunctive Ladar ECCM Scanning Array I
-	Conjunctive Ladar ECCM Scanning Array I
+	// Command Processor I
+	// Command Processor I
+	// Command Processor I
+	// Conjunctive Ladar ECCM Scanning Array I
+	// Conjunctive Ladar ECCM Scanning Array I
 
-	Covert Ops Cloaking Device II
-	Skirmish Warfare Link - Evasive Maneuvers II
-	Skirmish Warfare Link - Rapid Deployment II
-	Skirmish Warfare Link - Interdiction Maneuvers II
-	Information Warfare Link - Sensor Integrity II
+	// Covert Ops Cloaking Device II
+	// Skirmish Warfare Link - Evasive Maneuvers II
+	// Skirmish Warfare Link - Rapid Deployment II
+	// Skirmish Warfare Link - Interdiction Maneuvers II
+	// Information Warfare Link - Sensor Integrity II
 
-	Medium Processor Overclocking Unit I
-	Medium Processor Overclocking Unit I
-	Medium Low Friction Nozzle Joints I
+	// Medium Processor Overclocking Unit I
+	// Medium Processor Overclocking Unit I
+	// Medium Low Friction Nozzle Joints I
 
-	Loki Electronics - Dissolution Sequencer
-	Loki Defensive - Warfare Processor
-	Loki Engineering - Supplemental Coolant Injector
-	Loki Offensive - Covert Reconfiguration
-	Loki Propulsion - Interdiction Nullifier`
+	// Loki Electronics - Dissolution Sequencer
+	// Loki Defensive - Warfare Processor
+	// Loki Engineering - Supplemental Coolant Injector
+	// Loki Offensive - Covert Reconfiguration
+	// Loki Propulsion - Interdiction Nullifier`
 
-	components := strings.Split(fitStr, "\n")
-	shiptmp := strings.Split(components[0], ",")
-	shiptmp = strings.Split(shiptmp[0], "[")
-	ship := shiptmp[1]
-	fmt.Println(ship)
+	// components := strings.Split(fitStr, "\n")
+	// shiptmp := strings.Split(components[0], ",")
+	// shiptmp = strings.Split(shiptmp[0], "[")
+	// ship := shiptmp[1]
+	// fmt.Println(ship)
 }
 
 func initTypes() {
