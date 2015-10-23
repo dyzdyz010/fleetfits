@@ -49,7 +49,8 @@
 
 								<label style="margin-top: 20px; margin-right: 10px;">
 									<input type="checkbox" checked="checked"> NN-S
-								</label>							</div>
+								</label>							
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="fit-tags" class="col-xs-2 control-label" style="font-weight: bold;">Tags</label>
@@ -84,16 +85,7 @@
 						<div class="form-group">
 							<label class="col-xs-2 control-label" style="font-weight: bold;">Equipments</label>
 							<div class="col-md-10 col-xs-12">
-								<div class="well well-sm row" id="preview-equipments">
-<!-- 									<label class="col-xs-12">Co-Processor II</label>
-									<label class="col-xs-12">Co-Processor II</label>
-									<label class="col-xs-12">Co-Processor II</label>
-									<label class="col-xs-12">Co-Processor II</label>
-									<label class="col-xs-12">Loki</label>
-									<label class="col-xs-12">Loki</label>
-									<label class="col-xs-12">Loki</label>
-									<label class="col-xs-12">Loki</label>
- -->								</div>
+								<div class="well well-sm row" id="preview-equipments"></div>
 							</div>
 						</div>
 					</fieldset>
