@@ -6,7 +6,7 @@ import (
 )
 
 type EVEType struct {
-	TypeID string `bson:"_id" json:"id"`
+	TypeID string `bson:"_id" json:"typeID"`
 	Name   string `json:"name"`
 }
 

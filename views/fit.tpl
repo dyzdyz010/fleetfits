@@ -40,17 +40,25 @@
 						<div class="form-group">
 							<label for="fit-group" class="col-xs-2 control-label" style="font-weight: bold;">Group</label>
 							<div class="col-md-10 col-xs-12">
-								<select class="form-control" id="fit-group">
-									<option>Imperium</option>
-									<option>FCON</option>
-									<option>NN-S</option>
-								</select>
-							</div>
+								<label style="margin-top: 20px; margin-right: 10px;">
+									<input type="checkbox" checked="checked"> Imperium
+								</label>
+								<label style="margin-top: 20px; margin-right: 10px;">
+									<input type="checkbox" checked="checked"> FCON
+								</label>
+
+								<label style="margin-top: 20px; margin-right: 10px;">
+									<input type="checkbox" checked="checked"> NN-S
+								</label>							</div>
 						</div>
 						<div class="form-group">
 							<label for="fit-tags" class="col-xs-2 control-label" style="font-weight: bold;">Tags</label>
 							<div class="col-md-10 col-xs-12">
 								<input name="tags" id="fit-tags">
+
+								<label style="margin-top: 20px;">
+									<input type="checkbox" checked="checked"> Active
+								</label>
 							</div>
 						</div>
 						<div class="form-group">
