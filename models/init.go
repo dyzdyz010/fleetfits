@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	// "fmt"
 	"gopkg.in/mgo.v2"
+	"os"
 	// "strings"
 	// "gopkg.in/mgo.v2/bson"
 	"io/ioutil"
@@ -28,35 +29,32 @@ func init() {
 }
 
 func initTypes() {
-
-	data, err := ioutil.ReadFile("models/types.json")
-	if err != nil {
-		panic(err)
-	}
-	types = make([]EVEType, 0)
-	json.Unmarshal(data, &types)
-
-	count, err := c_eve_types.Count()
-	if err != nil {
-		panic(err)
-	}
-	// fmt.Println(count)
-	if count == len(types) {
-		return
-	}
-
-	for i := 0; i < len(types); i++ {
-		T := types[i]
-
-		buf := EVEType{}
-		err = c_eve_types.FindId(T.TypeID).One(&buf)
-		if err != nil && err != mgo.ErrNotFound {
+	if _, err := os.Stat("models/types.json"); err == nil {
+		data, err := ioutil.ReadFile("models/types.json")
+		if err != nil {
 			panic(err)
 		}
-		if buf.Name == T.Name {
-			continue
+		types = make([]EVEType, 0)
+		json.Unmarshal(data, &types)
+
+		for i := 0; i < len(types); i++ {
+			T := types[i]
+
+			buf := EVEType{}
+			err = c_eve_types.FindId(T.TypeID).One(&buf)
+			if err != nil && err != mgo.ErrNotFound {
+				panic(err)
+			}
+			if buf.Name == T.Name {
+				continue
+			}
+
+			c_eve_types.Insert(T)
 		}
 
-		c_eve_types.Insert(T)
+		err = os.Rename("models/types.json", "models/types.json.backup")
+		if err != nil {
+			panic(err)
+		}
 	}
 }
