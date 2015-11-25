@@ -44,7 +44,9 @@ func ParseFit(fitStr string) ShipFit {
 		equipment := EVEType{}
 		amount := 1
 
-		re := regexp.MustCompile(".*x[0-9]$")
+		typeName = strings.Split(typeName, ",")[0]
+
+		re := regexp.MustCompile(".*x[0-9]*$")
 		if re.MatchString(typeName) {
 			amountSepIndex := strings.LastIndex(typeName, " ")
 			etype := typeName[:amountSepIndex]
