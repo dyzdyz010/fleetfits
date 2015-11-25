@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
+	"regexp"
+	"strconv"
 	"strings"
 )
 
@@ -33,27 +35,39 @@ func ParseFit(fitStr string) ShipFit {
 	fit.Ship = ship
 	fit.Name = fitName
 
-	for _, line := range itemArr[1:] {
-		fmt.Println(line)
-		if line == "" {
+	for _, typeName := range itemArr[1:] {
+		fmt.Println(typeName)
+		if typeName == "" {
 			continue
 		}
 
 		equipment := EVEType{}
-		err := c_eve_types.Find(bson.M{"name": line}).One(&equipment)
+		amount := 1
+
+		re := regexp.MustCompile(".*x[0-9]$")
+		if re.MatchString(typeName) {
+			amountSepIndex := strings.LastIndex(typeName, " ")
+			etype := typeName[:amountSepIndex]
+			amountStr := strings.Replace(typeName[amountSepIndex:], " ", "", -1)
+			amount, _ = strconv.Atoi(strings.Replace(amountStr, "x", "", 1))
+			typeName = etype
+		}
+
+		err := c_eve_types.Find(bson.M{"name": typeName}).One(&equipment)
 		if err != nil {
 			if err == mgo.ErrNotFound {
 				fit.Items = append(fit.Items, EVEType{Name: mgo.ErrNotFound.Error()})
 			} else {
-				fmt.Println("%s not found in database.", line)
+				fmt.Println("%s not found in database.", typeName)
 				panic(err)
 			}
 		}
+		equipment.Amount = amount
 		fmt.Println(equipment)
 		fit.Items = append(fit.Items, equipment)
 	}
 
-	fmt.Println(fit.Items)
+	// fmt.Println(fit.Items)
 
 	return fit
 }
@@ -62,7 +76,7 @@ func LinkOfFit(fit ShipFit) string {
 	result := fit.Ship.TypeID + ":"
 
 	for _, item := range fit.Items {
-		result = result + item.TypeID + ";1" + ":"
+		result = result + item.TypeID + ";" + strconv.Itoa(item.Amount) + ":"
 	}
 
 	result = result + ":"

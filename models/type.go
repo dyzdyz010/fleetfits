@@ -8,6 +8,7 @@ import (
 type EVEType struct {
 	TypeID string `bson:"_id" json:"typeID"`
 	Name   string `json:"name"`
+	Amount int
 }
 
 func TypeIDByName(name string) string {
